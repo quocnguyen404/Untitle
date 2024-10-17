@@ -32,7 +32,9 @@ public class ShoppingHandler : MonoBehaviour
             else
             {
                 mouseIndicator.SetPosition(mPosition);
-             
+                mouseIndicator.SetActive(false);
+                if(buyingName != "")
+                    mouseIndicator.SetActive(true);
             }
         }
     }
@@ -40,6 +42,8 @@ public class ShoppingHandler : MonoBehaviour
     //Call when drag shopping button
     public void HandleBeginDrag(string entityName)
     {
+        //Todo set sprite
+        mouseIndicator.SetSprite(DataHelper.Sprites.GetSprite(entityName));
         buyingName = entityName;
         Debug.Log("Buy: " + entityName);
     }
@@ -48,6 +52,7 @@ public class ShoppingHandler : MonoBehaviour
     public void HandleEndDrag()
     {
         OnRelease?.Invoke(buyingName);
+        mouseIndicator.Default();
         buyingName = "";
         Debug.Log("Release");
     }

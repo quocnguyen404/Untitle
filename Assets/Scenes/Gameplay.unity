@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseIndicator: {fileID: 1283612818}
-  IndicatorDelay: 0.2
+  IndicatorDelay: 0.05
 --- !u!1 &1191539333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1229,10 @@ PrefabInstance:
     - target: {fileID: 3470647949474705393, guid: 1dac80f4d7b4cf84eb371ed1c52bef0d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668440641450534828, guid: 1dac80f4d7b4cf84eb371ed1c52bef0d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
