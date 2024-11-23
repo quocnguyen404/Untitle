@@ -2,22 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseIndicator : Entity
+namespace Object
 {
-    [SerializeField] private Sprite defaultSprite;
-
-    public void Default()
+    public class MouseIndicator : Entity
     {
-        SetSprite(defaultSprite);
-    }
-
-    public void SetPosition(Vector3 position)
-    {
-        transform.position = position;
-    }
-
-    public void SetActive(bool isActive)
-    {
-        gameObject.SetActive(isActive);
+        [SerializeField] private Sprite defaultSprite;
     }
 }
+
