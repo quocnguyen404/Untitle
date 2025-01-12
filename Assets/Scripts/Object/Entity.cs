@@ -8,8 +8,13 @@ namespace Object
     public class Entity : MonoBehaviour
     {
         public string Name => _name;
-        [SerializeField] private string _name;
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] protected string _name;
+        [SerializeField] protected SpriteRenderer sr;
+    
+        public void SetSprite(Sprite sprite)
+        {
+            sr.sprite = sprite;
+        }
     }
 }
 

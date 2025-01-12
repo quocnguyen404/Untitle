@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +9,13 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
+        GameUtilities.MainCam = Camera.main;
         mapManager.Initialize();
+    }
+
+    public void Update()
+    {
+        
     }
 
     public void OnEnble()

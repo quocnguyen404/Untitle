@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HandleData
+namespace Data
 {
     public class Sprites
     {
@@ -23,13 +23,10 @@ namespace HandleData
         {
             if(!sprites.ContainsKey(spriteName))
             {
-                Sprite temp = Resources.Load<Sprite>(string.Format(GameConstant.SPRITE_PATH, spriteName));
-                if(temp == null)
-                {
-                    Debug.LogError("Not exist sprite: " + spriteName + " in Resources");
+                Sprite sprite = Resources.Load<Sprite>(string.Format(GameConstant.SPRITE_PATH, spriteName));
+                if(sprite == null)
                     return null;
-                }
-                sprites.Add(spriteName, temp);
+                sprites.Add(spriteName, sprite);
             }
             return sprites[spriteName];
         }

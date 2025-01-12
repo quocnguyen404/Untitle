@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HandleData
+namespace Data
 {
     public static class DataHelper
     {
-        private static Sprites sprites;
+        private static Sprites sprites = null;
         public static Sprites Sprites
         {
             get
@@ -17,14 +17,14 @@ namespace HandleData
             }
         }
 
-        private static PlayerData playerData;
-        public static PlayerData PlayerData
+        private static Prefabs prefabs = null;
+        public static Prefabs Prefabs
         {
             get
             {
-                if(playerData == null)
-                    playerData = new PlayerData();
-                return playerData;
+                if(prefabs == null)
+                    prefabs = new Prefabs();
+                return prefabs;
             }
         }
     }

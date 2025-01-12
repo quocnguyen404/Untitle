@@ -5,3 +5,9 @@ public enum SpriteOrder
     Entity,
 }
 
+public enum Prefab
+{
+    Tile,
+    Chunk,
+}
+
