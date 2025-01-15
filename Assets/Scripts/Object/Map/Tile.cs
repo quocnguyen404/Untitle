@@ -8,6 +8,8 @@ namespace Object.Map
 {
     public class Tile : MonoBehaviour
     {
+        private Entity[] children;
+
         public static readonly Vector2 TileSize = new Vector2(1f, 0.5f);
         public SpriteRenderer sr;
 

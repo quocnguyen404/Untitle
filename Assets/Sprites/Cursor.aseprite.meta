@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57e27708c65e1f14cbf5ba28dd6dddc1
+guid: b24c68e2403ae7149a4f77eba736c083
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Scene
+  - name: Cursor
     originalName: 
-    pivot: {x: 0, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 0
-      height: 0
-    spriteID: 5a48230eb31f6434c8dd0b14b6d0ad9f
+      width: 64
+      height: 64
+    spriteID: ee632330c1091e5439a9053ec8a335a5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,28 +140,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: -60, y: -60}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1738571706
-    name: Scene
+    guid: -454137200
+    name: Cursor
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Scene
+    - name: Cursor
       frameIndex: 0
       cellRect:
-        x: 128
-        y: 64
+        x: 0
+        y: 0
         width: 64
         height: 64
-      spriteId: 5a48230eb31f6434c8dd0b14b6d0ad9f
+      spriteId: ee632330c1091e5439a9053ec8a335a5
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 320, y: 192}
+  canvasSize: {x: 64, y: 64}

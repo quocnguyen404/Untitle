@@ -18,7 +18,7 @@ namespace Object.Map
         [SerializeField] private Vector2Int currentCellPosition;
         [SerializeField] private Vector2Int lastCellPosition;
 
-        private Dictionary<Vector2Int, Entity> entities;
+        // private Dictionary<Vector2Int, Entity> entities;
         private Tile[,] tiles;
         private Tile tilepref;
 

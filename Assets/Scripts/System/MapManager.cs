@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object.Map;
 using Data;
+using System;
 
 public class MapManager : MonoBehaviour
 {
     //chunk size = 9x9
     [SerializeField] private Vector2 origin;
     [SerializeField] private Vector2Int ChunkNum = new Vector2Int(1, 1);
+    // [SerializeField] private string defaultTile = "Dirt";
 
     [Space]
     [Header("Chunk handle")]
@@ -61,10 +63,11 @@ public class MapManager : MonoBehaviour
     private void ChunkHover()
     {
         Vector2Int tempPos = WorldToChunk(mousePosition);
-        bool legal = LegalChunkPosition(tempPos);
+        bool legal = LegalChunkPosition(tempPos.x, tempPos.y);
 
         if(!legal)
         {
+            MouseHandler.Instance.MouseIndicator.transform.position = mousePosition;
             if(hoverChunk != null)
                 hoverChunk.ExitHover();
             hoverChunk = null;
@@ -90,7 +93,7 @@ public class MapManager : MonoBehaviour
 
     public Chunk GetChunk(Vector2Int cPosition)
     {
-        if(!LegalChunkPosition(cPosition))
+        if(!LegalChunkPosition(cPosition.x , cPosition.y))
         {
             Debug.LogError("Illegal chunk position");
             return null;
@@ -101,7 +104,7 @@ public class MapManager : MonoBehaviour
     public Chunk GetChunk(Vector2 wPosition)
     {
         Vector2Int cPosition = WorldToChunk(wPosition);
-        if(!LegalChunkPosition(cPosition))
+        if(!LegalChunkPosition(cPosition.x, cPosition.y))
         {
             Debug.LogError("Illegal chunk position");
             return null;
@@ -118,19 +121,21 @@ public class MapManager : MonoBehaviour
 
     public Vector2Int WorldToChunk(Vector2 wPosition)
     {
-        float x = Mathf.Abs((wPosition.y - origin.y) / mapUnit.y + ((wPosition.x - origin.x) / mapUnit.x));
-        float y = Mathf.Abs((wPosition.y - origin.y) / mapUnit.y - ((wPosition.x - origin.x) / mapUnit.x));
+        float x = (wPosition.y - origin.y) / mapUnit.y + ((wPosition.x - origin.x) / mapUnit.x);
+        float y = (wPosition.y - origin.y) / mapUnit.y - ((wPosition.x - origin.x) / mapUnit.x);
         relativeMousePos.x = x;
         relativeMousePos.y = y;
+        if(!LegalChunkPosition(x, y))
+            return new Vector2Int(-1, -1); //return illegal position
         int cX = (int)x;
         int cY = (int)y;
         return new Vector2Int(cX, cY);
     }
 
-    public bool LegalChunkPosition(Vector2Int cPosition)
+    private bool LegalChunkPosition(float x, float y)
     {
-        if(cPosition.x < 0 || cPosition.x >= ChunkNum.x ||
-           cPosition.y < 0 || cPosition.y >= ChunkNum.y)
+        if(x < 0 || x >= ChunkNum.x ||
+           y < 0 || y >= ChunkNum.y)
             return false;
         return true;
     }
