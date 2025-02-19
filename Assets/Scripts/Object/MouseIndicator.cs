@@ -22,7 +22,7 @@ namespace Object
 
         public void TileMode()
         {
-            SetSprite(DataHelper.Sprites.GetSprite("Indicator"));
+            SetSprite(GameConfigure.Sprites.GetSprite("Indicator"));
         }
     }
 }

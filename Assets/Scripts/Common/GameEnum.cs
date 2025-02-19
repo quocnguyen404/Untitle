@@ -8,6 +8,7 @@ public enum SpriteOrder
 public enum Prefab
 {
     Tile,
+    //Dirt,
     Chunk,
 }
 

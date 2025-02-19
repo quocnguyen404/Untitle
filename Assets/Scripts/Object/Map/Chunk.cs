@@ -9,18 +9,23 @@ namespace Object.Map
 {
     public class Chunk : MonoBehaviour
     {
-        public static readonly Vector2Int ChunkSize = new Vector2Int(9, 9);
-        public Vector2Int index;
-        public bool drawRec = false;
-
         [SerializeField] private Vector2 origin;
-        
         [SerializeField] private Vector2Int currentCellPosition;
         [SerializeField] private Vector2Int lastCellPosition;
+
 
         // private Dictionary<Vector2Int, Entity> entities;
         private Tile[,] tiles;
         private Tile tilepref;
+
+        private Tile hoverTile = null;
+        private bool hovering = false;
+
+
+        public static readonly Vector2Int ChunkSize = new Vector2Int(9, 9);
+        public Vector2Int index;
+        public bool drawRec = false;
+
 
         public void Initilize(Vector2 chunkPosition)
         {
@@ -28,7 +33,7 @@ namespace Object.Map
             int width = ChunkSize.x;
             int height = ChunkSize.y;
             
-            tilepref = DataHelper.Prefabs.GetPrefab<Tile>(Prefab.Tile);
+            tilepref = GameConfigure.Prefabs.GetPrefab<Tile>(Prefab.Tile);
             if(tilepref == null)
                 Debug.LogError("Tile prefab is null");
 
@@ -36,12 +41,12 @@ namespace Object.Map
             tiles = new Tile[width, height];
             origin = new Vector2(transform.position.x, transform.position.y);
 
-            for(int x = 0; x < width; x++)
+            for(int x = width - 1; x >= 0; x--)
             {
-                for(int y = 0; y < height; y++)
+                for(int y = height - 1; y >= 0; y--)
                 {
                     Tile ntile = Instantiate(tilepref, transform);
-                    ntile.SetSprite(DataHelper.Sprites.GetSprite("Dirt"));
+                    ntile.SetSprite(GameConfigure.Sprites.GetSprite("Dirt"));
                     ntile.TileName = "Dirt";
                     ntile.transform.position = CellToWorld(x, y);
                     tiles[x, y] = ntile;
@@ -75,8 +80,6 @@ namespace Object.Map
             }
         }
 
-        private Tile hoverTile = null;
-        private bool hovering = false;
         public void EnterHover()
         {
             drawRec = true;
